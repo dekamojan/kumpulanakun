@@ -937,17 +937,6 @@ function InfoPage() {
             </p>
           </div>
         </div>
-      </section>
-      <section className="info-card telegram-card">
-        <h2>Need help or want the latest updates?</h2>
-        <p>
-          Follow the Flowpilot Telegram channel for announcements, guides, and
-          product updates.
-        </p>
-        <button className="secondary" disabled={!TELEGRAM_CHANNEL_URL}>
-          Join Telegram Channel
-        </button>
-      </section>
     </div>
   )
 }
