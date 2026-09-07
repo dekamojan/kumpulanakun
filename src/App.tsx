@@ -553,11 +553,12 @@ const visible = useMemo(() => {
             </div>
           </div>
         )}
-        {addAccountOpen && (
+{addAccountOpen && (
           <div className="overlay">
             <div className="dialog" role="dialog" aria-modal="true" aria-labelledby="add-account-title">
               <h2 id="add-account-title">Add Account</h2>
-              <p>Enter a name for this Google Flow account.</p>
+              <p>Enter a name for this account.</p>
+              
               <input
                 autoFocus
                 value={newAccountName}
@@ -571,7 +572,21 @@ const visible = useMemo(() => {
                 placeholder="Enter account name"
                 maxLength={80}
               />
+
+              {/* PASTIKAN KODE DROPDOWN DITAMBAHKAN DI SINI */}
+              <select 
+                value={newAccountUrl} 
+                onChange={(e) => setNewAccountUrl(e.target.value)}
+                style={{ width: "100%", height: "46px", marginTop: "10px", borderRadius: "10px", background: "#131619", color: "#e8e9e9", border: "1px solid #363a3d", padding: "0 14px" }}
+              >
+                <option value="https://flow.google">Google Flow</option>
+                <option value="https://dola.com">Dola</option>
+                <option value="https://migoo.com">Migoo</option>
+              </select>
+              {/* BATAS AKHIR KODE DROPDOWN */}
+
               {addAccountError && <p className="dialog-error">{addAccountError}</p>}
+              
               <div className="dialog-actions">
                 <button className="secondary" onClick={() => setAddAccountOpen(false)}>
                   Cancel
@@ -583,10 +598,6 @@ const visible = useMemo(() => {
             </div>
           </div>
         )}
-      </main>
-    </div>
-  )
-}
 function Brand() {
   return (
     <div className="brand">
