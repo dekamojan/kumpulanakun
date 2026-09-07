@@ -119,7 +119,21 @@ export default function App() {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
   const [dragTargetId, setDragTargetId] = useState<string | null>(null)
   const [dragPreviewIds, setDragPreviewIds] = useState<string[] | null>(null)
-  useEffect(() => { void (async () => { try { const id=await invoke<string>("get_device_id"); setDeviceId(id); const saved=await invoke<LicenseState|null>("get_license_state"); if(!saved?.status){setLicenseChecking(false);return} setLicenseState(saved); const validated=await invoke<LicenseState>("validate_license"); setLicenseState(validated); setLicensed(true); await invoke("expand_main_window"); const w=getCurrentWindow(); await w.show(); await w.setFocus() } catch (error) { setLicenseError(typeof error === "string" ? error : "Server Unavailable") } finally { setLicenseChecking(false) } })() }, [])
+  useEffect(() => { 
+    void (async () => { 
+      try { 
+        setLicensed(true);
+        setLicenseChecking(false);
+        // Memaksa layar membesar tanpa perlu cek lisensi
+        await invoke("expand_main_window"); 
+        const w = getCurrentWindow(); 
+        await w.show(); 
+        await w.setFocus(); 
+      } catch (error) { 
+        console.error(error);
+      } 
+    })() 
+  }, [])
   const dragSourceRef = useRef<HTMLElement | null>(null)
   const dragPointerIdRef = useRef<number | null>(null)
   const dragSourceIdRef = useRef<string | null>(null)
