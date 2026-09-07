@@ -4,7 +4,7 @@ use std::{fs, path::PathBuf};
 use tauri::{path::BaseDirectory, AppHandle, Manager, Runtime};
 use uuid::Uuid;
 
-const API: &str = "https://flowpilot-license-server.frangga-snow.workers.dev";
+const API: &str = "";
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct LicenseState {
