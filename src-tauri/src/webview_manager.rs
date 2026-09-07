@@ -159,12 +159,10 @@ pub fn open<R: Runtime>(
     }
 
     let profile = profile_path(app, &account_id)?;
-    let url = WebviewUrl::External(
-        GOOGLE_FLOW_URL
-            .parse()
-            .map_err(|_| "invalid Google Flow URL")?,
+    let parsed_url = WebviewUrl::External(
+        url.parse().map_err(|_| "invalid URL")?,
     );
-    let builder = WebviewBuilder::new(requested_label, url)
+    let builder = WebviewBuilder::new(requested_label, parsed_url)
         .data_directory(profile)
         .on_navigation(|url| url.scheme() == "https")
         .on_new_window(|_, _| tauri::webview::NewWindowResponse::Deny);
