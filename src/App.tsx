@@ -445,17 +445,15 @@ const visible = useMemo(() => {
                 : view.toUpperCase()}
             </div>
             <h1>
-              {view === "settings"
-                ? "Settings"
-                : view === "favorites"
-                ? "Favorite Accounts"
-                : view === "license"
-                ? "License"
-                : view === "updates"
-                ? "Updates"
-                : view === "info"
-                ? "How to Use Flowpilot"
-                : "Google Flow Accounts"}
+              {view === "settings" ? "Settings"
+                : view === "favorites" ? "Favorite Accounts"
+                : view === "license" ? "License"
+                : view === "updates" ? "Updates"
+                : view === "info" ? "How to Use Flowpilot"
+                : view === "flow-accounts" ? "Google Flow Accounts"
+                : view === "dola-accounts" ? "Dola Accounts"
+                : view === "migoo-accounts" ? "Migoo.ai Accounts"
+                : "All Accounts"}
             </h1>
             <p>
               {view === "settings"
