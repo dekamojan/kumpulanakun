@@ -16,6 +16,7 @@ type Account = {
   avatar: string
   favorite: boolean
   order: number
+  url?: string
 }
 const LICENSE_PURCHASE_URL = "https://tokotelegram.com/toko/flowpilot"
 const TELEGRAM_CHANNEL_URL = ""
@@ -198,6 +199,7 @@ export default function App() {
       avatar: "NF",
       favorite: false,
       order: accounts.length,
+      url: newAccountUrl,
     }
     setAccounts([...accounts, a])
     setAddAccountOpen(false)
