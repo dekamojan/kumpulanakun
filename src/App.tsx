@@ -75,7 +75,7 @@ const starter: Account[] = [
 ]
 
 export default function App() {
-  const [licensed, setLicensed] = useState(false)
+  const [licensed, setLicensed] = useState(true)
   const [licenseChecking, setLicenseChecking] = useState(true)
   const [licenseError, setLicenseError] = useState("")
   const [licenseState, setLicenseState] = useState<LicenseState | null>(null)
