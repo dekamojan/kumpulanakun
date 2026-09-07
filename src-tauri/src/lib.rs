@@ -83,9 +83,7 @@ async fn remove_google_flow_account(
 
 #[tauri::command]
 fn open_external_url(url: String) -> Result<(), String> {
-    if url != "https://tokotelegram.com/toko/flowpilot" {
-        return Err("unsupported external URL".to_string());
-    }
+    // Pengecekan IF dihapus agar bebas buka link apapun
     std::process::Command::new("cmd")
         .args(["/C", "start", "", &url])
         .spawn()
