@@ -232,15 +232,22 @@ const [view, setView] = useState<
     }
   }, [active, accounts, view, fullView, navigatorOpen])
   const favoriteCount = accounts.filter((a) => a.favorite).length
-  const visible = useMemo(
-    () =>
-      accounts.filter(
-        (a) =>
-          (view !== "favorites" || a.favorite) &&
-          `${a.name} ${a.email}`.toLowerCase().includes(query.toLowerCase())
-      ),
-    [accounts, query, view]
-  )
+const visible = useMemo(() => {
+    return accounts.filter((a) => {
+      // Filter pencarian teks
+      const matchesSearch = `${a.name} ${a.email}`.toLowerCase().includes(query.toLowerCase());
+      if (!matchesSearch) return false;
+
+      // Filter berdasarkan Tab yang dipilih
+      if (view === "favorites") return a.favorite;
+      if (view === "flow-accounts") return !a.url || a.url.includes("flow.google");
+      if (view === "dola-accounts") return a.url && a.url.includes("dola");
+      if (view === "migoo-accounts") return a.url && a.url.includes("migoo");
+      
+      // Jika view === "accounts", tampilkan semua (All Accounts)
+      return true;
+    });
+  }, [accounts, query, view]);
   const displayed = useMemo(() => {
     if (!dragPreviewIds || view !== "accounts") return visible
     const byId = new Map(accounts.map((account) => [account.id, account]))
