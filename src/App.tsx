@@ -1108,6 +1108,7 @@ function FlowShell({
     if (!rect) return
     invoke("open_google_flow", {
       accountId: account.id,
+      url: account.url || "https://flow.google",
       x: rect.left,
       y: rect.top,
       width: rect.width,
