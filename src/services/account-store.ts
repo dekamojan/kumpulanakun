@@ -6,6 +6,7 @@ export type StoredAccount = {
   avatar: string
   favorite: boolean
   order: number
+  url?: string
 }
 const STORAGE_KEY = "flowpilot-accounts"
 function isAccount(value: unknown): value is StoredAccount {
