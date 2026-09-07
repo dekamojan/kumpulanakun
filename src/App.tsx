@@ -588,7 +588,7 @@ const visible = useMemo(() => {
 
               {addAccountError && <p className="dialog-error">{addAccountError}</p>}
               
-              <div className="dialog-actions">
+<div className="dialog-actions">
                 <button className="secondary" onClick={() => setAddAccountOpen(false)}>
                   Cancel
                 </button>
@@ -599,6 +599,11 @@ const visible = useMemo(() => {
             </div>
           </div>
         )}
+      </main>
+    </div>
+  )
+}
+
 function Brand() {
   return (
     <div className="brand">
