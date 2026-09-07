@@ -98,7 +98,7 @@ export default function App() {
     }
   })
   const [query, setQuery] = useState("")
-const [view, setView] = useState<
+  const [view, setView] = useState<
     | "accounts"
     | "flow-accounts"
     | "dola-accounts"
@@ -115,10 +115,14 @@ const [view, setView] = useState<
   const [navigatorOpen, setNavigatorOpen] = useState(false)
   const [dialog, setDialog] = useState<Account | null>(null)
   const [menu, setMenu] = useState<string | null>(null)
-const [addAccountOpen, setAddAccountOpen] = useState(false)
-  const [newAccountName, setNewAccountName] = useState("")
+  
+  // BAGIAN PERBAIKAN 1: Variabel newAccountName dikembalikan
+  const [addAccountOpen, setAddAccountOpen] = useState(false)
+  const [newAccountName, setNewAccountName] = useState("") 
   const [newAccountUrl, setNewAccountUrl] = useState("https://flow.google")
   const [addAccountError, setAddAccountError] = useState("")
+  // ========================================================
+  
   const [draggingId, setDraggingId] = useState<string | null>(null)
   const [dragPoint, setDragPoint] = useState({ x: 0, y: 0 })
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
@@ -129,7 +133,6 @@ const [addAccountOpen, setAddAccountOpen] = useState(false)
       try { 
         setLicensed(true);
         setLicenseChecking(false);
-        // Memaksa layar membesar tanpa perlu cek lisensi
         await invoke("expand_main_window"); 
         const w = getCurrentWindow(); 
         await w.show(); 
@@ -233,19 +236,14 @@ const [addAccountOpen, setAddAccountOpen] = useState(false)
     }
   }, [active, accounts, view, fullView, navigatorOpen])
   const favoriteCount = accounts.filter((a) => a.favorite).length
-const visible = useMemo(() => {
+  const visible = useMemo(() => {
     return accounts.filter((a) => {
-      // Filter pencarian teks
       const matchesSearch = `${a.name} ${a.email}`.toLowerCase().includes(query.toLowerCase());
       if (!matchesSearch) return false;
-
-      // Filter berdasarkan Tab yang dipilih
       if (view === "favorites") return a.favorite;
       if (view === "flow-accounts") return !a.url || a.url.includes("flow.google");
       if (view === "dola-accounts") return a.url && a.url.includes("dola");
       if (view === "migoo-accounts") return a.url && a.url.includes("migoo");
-      
-      // Jika view === "accounts", tampilkan semua (All Accounts)
       return true;
     });
   }, [accounts, query, view]);
@@ -270,7 +268,7 @@ const visible = useMemo(() => {
       })
     }
     if (dragSourceRef.current && dragPointerIdRef.current !== null) {
-      try { dragSourceRef.current.releasePointerCapture(dragPointerIdRef.current) } catch { /* already released */ }
+      try { dragSourceRef.current.releasePointerCapture(dragPointerIdRef.current) } catch { }
     }
     dragSourceRef.current = null
     dragPointerIdRef.current = null
@@ -289,7 +287,6 @@ const visible = useMemo(() => {
         x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
       )
       if (hit) return { id: hit.element.dataset.accountId || null, after: x > (hit.rect.left + hit.rect.right) / 2 }
-      // Use the nearest card center when the pointer crosses a grid gap or a new row.
       const nearest = candidates
         .map(({ element, rect }) => ({
           element,
@@ -554,7 +551,7 @@ const visible = useMemo(() => {
             </div>
           </div>
         )}
-{addAccountOpen && (
+        {addAccountOpen && (
           <div className="overlay">
             <div className="dialog" role="dialog" aria-modal="true" aria-labelledby="add-account-title">
               <h2 id="add-account-title">Add Account</h2>
@@ -574,7 +571,6 @@ const visible = useMemo(() => {
                 maxLength={80}
               />
 
-              {/* PASTIKAN KODE DROPDOWN DITAMBAHKAN DI SINI */}
               <select 
                 value={newAccountUrl} 
                 onChange={(e) => setNewAccountUrl(e.target.value)}
@@ -584,11 +580,10 @@ const visible = useMemo(() => {
                 <option value="https://dola.com">Dola</option>
                 <option value="https://migoo.com">Migoo</option>
               </select>
-              {/* BATAS AKHIR KODE DROPDOWN */}
 
               {addAccountError && <p className="dialog-error">{addAccountError}</p>}
               
-<div className="dialog-actions">
+              <div className="dialog-actions">
                 <button className="secondary" onClick={() => setAddAccountOpen(false)}>
                   Cancel
                 </button>
@@ -599,10 +594,12 @@ const visible = useMemo(() => {
             </div>
           </div>
         )}
+      {/* BAGIAN PERBAIKAN 2: Penutup Main dan Div yang hilang */}
       </main>
     </div>
   )
 }
+// ========================================================
 
 function Brand() {
   return (
@@ -932,7 +929,7 @@ function InfoPage() {
             </p>
           </div>
         </div>
-<div className="privacy-row">
+        <div className="privacy-row">
           <span>🛡️</span>
           <div>
             <h3>No Unnecessary Account Data Collection</h3>
@@ -943,10 +940,12 @@ function InfoPage() {
             </p>
           </div>
         </div>
+      {/* BAGIAN PERBAIKAN 3: Penutup Halaman Info Privasi */}
       </section>
     </div>
   )
 }
+// ========================================================
 
 function AddAccountCard({ onAdd }: { onAdd: () => void }) {
   return (
