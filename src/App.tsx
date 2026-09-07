@@ -932,7 +932,7 @@ function InfoPage() {
             </p>
           </div>
         </div>
-        <div className="privacy-row">
+<div className="privacy-row">
           <span>🛡️</span>
           <div>
             <h3>No Unnecessary Account Data Collection</h3>
@@ -943,6 +943,7 @@ function InfoPage() {
             </p>
           </div>
         </div>
+      </section>
     </div>
   )
 }
