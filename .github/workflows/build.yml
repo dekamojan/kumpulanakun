@@ -33,5 +33,5 @@ jobs:
         with:
           tagName: build-${{ github.run_id }}
           releaseName: 'Hasil Build Windows'
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
