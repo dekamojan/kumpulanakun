@@ -578,7 +578,7 @@ export default function App() {
               >
                 <option value="https://flow.google">Google Flow</option>
                 <option value="https://dola.com">Dola</option>
-                <option value="https://migoo.com">Migoo</option>
+                <option value="https://migoo.ai">Migoo</option>
               </select>
 
               {addAccountError && <p className="dialog-error">{addAccountError}</p>}
