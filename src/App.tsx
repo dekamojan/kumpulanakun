@@ -112,7 +112,7 @@ export default function App() {
   const [dialog, setDialog] = useState<Account | null>(null)
   const [menu, setMenu] = useState<string | null>(null)
   const [addAccountOpen, setAddAccountOpen] = useState(false)
-  const [newAccountName, setNewAccountName] = useState("")
+  const [newAccountUrl, setNewAccountUrl] = useState("https://flow.google")
   const [addAccountError, setAddAccountError] = useState("")
   const [draggingId, setDraggingId] = useState<string | null>(null)
   const [dragPoint, setDragPoint] = useState({ x: 0, y: 0 })
