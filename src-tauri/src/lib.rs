@@ -28,6 +28,7 @@ where
 async fn open_google_flow(
     app: tauri::AppHandle,
     account_id: String,
+    url: String,
     x: f64,
     y: f64,
     width: f64,
@@ -35,7 +36,7 @@ async fn open_google_flow(
 ) -> Result<(), String> {
     let operation_app = app.clone();
     run_on_ui_thread(&app, move || {
-        webview_manager::open(&operation_app, account_id, x, y, width, height)
+        webview_manager::open(&operation_app, account_id, url, x, y, width, height) 
     })
     .await
 }
