@@ -87,6 +87,7 @@ fn validate_bounds(x: f64, y: f64, width: f64, height: f64) -> Result<(), String
 pub fn open<R: Runtime>(
     app: &AppHandle<R>,
     account_id: String,
+    url: String,
     x: f64,
     y: f64,
     width: f64,
