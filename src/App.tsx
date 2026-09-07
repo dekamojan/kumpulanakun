@@ -98,8 +98,11 @@ export default function App() {
     }
   })
   const [query, setQuery] = useState("")
-  const [view, setView] = useState<
+const [view, setView] = useState<
     | "accounts"
+    | "flow-accounts"
+    | "dola-accounts"
+    | "migoo-accounts"
     | "favorites"
     | "license"
     | "updates"
