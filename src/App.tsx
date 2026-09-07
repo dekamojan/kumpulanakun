@@ -18,7 +18,7 @@ type Account = {
   order: number
   url?: string
 }
-const LICENSE_PURCHASE_URL = "https://tokotelegram.com/toko/flowpilot"
+const LICENSE_PURCHASE_URL = ""
 const TELEGRAM_CHANNEL_URL = ""
 const APP_VERSION = packageJson.version
 type LicenseState = { plan: string; status: string; expires_at: string | null; lifetime: boolean; last_validated_at: string; device_id: string }
