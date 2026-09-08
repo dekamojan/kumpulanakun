@@ -47,7 +47,7 @@ fn write<R: Runtime>(a: &AppHandle<R>, s: &LicenseState) -> Result<(), String> {
     fs::write(p, serde_json::to_vec(s).map_err(|e| e.to_string())?).map_err(|e| e.to_string())
 }
 fn entry() -> Result<Entry, String> {
-    Entry::new("Flowpilot", "license-key").map_err(|e| e.to_string())
+    Entry::new("VGenMulti", "license-key").map_err(|e| e.to_string())
 }
 fn device<R: Runtime>(a: &AppHandle<R>) -> Result<String, String> {
     if let Some(s) = read(a)? {
