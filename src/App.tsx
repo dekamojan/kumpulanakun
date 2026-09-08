@@ -18,31 +18,40 @@ type Account = {
   order: number
   url?: string
 }
-const LICENSE_PURCHASE_URL = ""
+// Ganti dengan link toko utama Anda (ini dipakai di halaman login awal)
+const LICENSE_PURCHASE_URL = "https://lynk.id/toko_anda" 
+
 const TELEGRAM_CHANNEL_URL = ""
 const APP_VERSION = packageJson.version
 type LicenseState = { plan: string; status: string; expires_at: string | null; lifetime: boolean; last_validated_at: string; device_id: string }
 const licensePlanLabel = (plan: string) => ({ five_minutes: "5 Minutes", one_day: "1 Day", seven_days: "7 Days", thirty_days: "30 Days", one_year: "1 Year", lifetime: "Lifetime" }[plan] || plan)
 const licenseStatusLabel = (status: string) => status ? status.replace(/_/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase()) : "Unavailable"
 const licenseExpiryLabel = (state: LicenseState | null) => state?.lifetime ? "Lifetime" : state?.expires_at ? new Date(state.expires_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : "—"
+
 const plans = [
   {
-    name: "30 Days",
-    originalPrice: "Rp50,000",
-    price: "Rp25,000",
-    description: "VGenMulti access for 30 days",
+    name: "5 Days Trial",
+    originalPrice: "Rp50.000",
+    price: "Gratis", // Ubah jadi Rp0 atau Gratis
+    description: "Try VGenMulti for 5 days completely free",
+    buttonText: "Get Trial License",
+    url: "https://lynk.id/toko_anda/trial" // Ganti dengan link khusus produk trial
   },
   {
     name: "1 Year",
     originalPrice: "Rp149.000",
     price: "Rp99.000",
     description: "VGenMulti access for 1 year",
+    buttonText: "Buy License",
+    url: "https://lynk.id/toko_anda/1-year" // Ganti dengan link produk 1 tahun
   },
   {
     name: "Lifetime",
     originalPrice: "Rp249.000",
     price: "Rp149.000",
     description: "VGenMulti access with no expiration",
+    buttonText: "Buy License",
+    url: "https://lynk.id/toko_anda/lifetime" // Ganti dengan link produk lifetime
   },
 ]
 const starter: Account[] = [
