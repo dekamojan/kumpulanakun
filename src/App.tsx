@@ -722,7 +722,7 @@ function SidebarIcon({ name }: { name: "accounts" | "favorites" | "license" | "u
   }
   return <svg className="sidebar-icon" {...common}>{paths[name]}</svg>
 }
-function LicensePage({ licenseState, onBuy }: { licenseState: LicenseState | null; onBuy: () => void }) {
+function LicensePage({ licenseState, onBuy }: { licenseState: LicenseState | null; onBuy: (url: string) => void }) {
   return (
     <div className="feature-page">
       <div className="plan-grid">
@@ -732,8 +732,9 @@ function LicensePage({ licenseState, onBuy }: { licenseState: LicenseState | nul
             <s>{plan.originalPrice}</s>
             <strong>{plan.price}</strong>
             <p>{plan.description}.</p>
-            <button className="primary" onClick={onBuy}>
-              Buy License
+            {/* Tombol akan membaca teks dan url dari daftar plans di atas */}
+            <button className="primary" onClick={() => onBuy(plan.url)}>
+              {plan.buttonText}
             </button>
           </section>
         ))}
