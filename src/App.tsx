@@ -188,7 +188,7 @@ export default function App() {
     setAddAccountError("")
     setAddAccountOpen(true)
   }
-  const createAccount = () => {
+const createAccount = () => {
     const name = newAccountName.trim()
     if (!name) {
       setAddAccountError("Please enter an account name.")
@@ -198,11 +198,20 @@ export default function App() {
       setAddAccountError("Account name must be 80 characters or fewer.")
       return
     }
+    
+    // MENENTUKAN LOGO BERDASARKAN URL YANG DIPILIH
+    let determinedAvatarUrl = "/google-flow.png";
+    if (newAccountUrl.includes("dola.com")) {
+      determinedAvatarUrl = "/dola.png";
+    } else if (newAccountUrl.includes("migoo.ai")) {
+      determinedAvatarUrl = "/migoo.png";
+    }
+
     const a: Account = {
       id: crypto.randomUUID(),
       name,
       email: null,
-      avatarUrl: "/google-flow.png",
+      avatarUrl: determinedAvatarUrl,
       avatar: "NF",
       favorite: false,
       order: accounts.length,
