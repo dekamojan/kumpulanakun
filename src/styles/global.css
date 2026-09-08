@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* TAMBAHKAN KODE INI AGAR APLIKASI BISA DI-SCROLL */
+html, body, #root, #app {
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 .flow-content { padding: 0; min-width: 0; }
 .flow-shell { min-height: calc(100vh - 40px); background: #0d0f10; color: #9b9c9e; }
 .flow-bar { position: relative; z-index: 2; }
