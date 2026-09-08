@@ -1044,7 +1044,9 @@ function DragPreview({ account, point, offset }: { account: Account | null; poin
         <div className="card-top"><span className={`star ${account.favorite ? "fav" : ""}`}>{account.favorite ? "★" : "☆"}</span><span className="more">•••</span></div>
         <div className="avatar large"><img src={account.avatarUrl || "/google-flow.png"} alt="" /></div>
         <h2>{account.name}</h2>
-        <div className="primary wide">Open Google Flow <span>→</span></div>
+        <div className="primary wide">
+          {account.url?.includes("dola") ? "Open Dola" : account.url?.includes("migoo") ? "Open Migoo" : "Open Google Flow"} <span>→</span>
+        </div>
       </article>
     </div>
   )
