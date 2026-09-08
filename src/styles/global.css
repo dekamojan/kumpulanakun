@@ -174,8 +174,7 @@ aside button.active, aside button:hover {
 /* Pointer-based account dragging: the source stays in the grid as a placeholder while the preview follows the pointer. */
 .card.is-draggable { cursor: grab; user-select: none; touch-action: none; }
 .card.is-draggable:active { cursor: grabbing; }
-.card.is-dragging { opacity: .28; border-style: dashed; border-color: #b6f09c88; background: #162019; box-shadow: none; }
-.card.is-drop-target { border-color: #b6f09c; box-shadow: inset 0 0 0 1px #b6f09c66; }
-.custom-drag-layer { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
-.drag-preview-card { position: absolute; width: min(310px, calc(100vw - 32px)); box-sizing: border-box; padding: 24px; background: #131619; border: 1px solid #b6f09c99; border-radius: 16px; opacity: .97; box-shadow: 0 26px 60px #0009, 0 0 0 1px #b6f09c22; transform-origin: center; will-change: transform; }
+.card.is-dragging { opacity: .28; border-style: dashed; border-color: #82dbf788; background: #162019; box-shadow: none; }
+.card.is-drop-target { border-color: #82dbf7; box-shadow: inset 0 0 0 1px #82dbf766; }
+.drag-preview-card { position: absolute; width: min(310px, calc(100vw - 32px)); box-sizing: border-box; padding: 24px; background: #131619; border: 1px solid #82dbf799; border-radius: 16px; opacity: .97; box-shadow: 0 26px 60px #0009, 0 0 0 1px #82dbf722; transform-origin: center; will-change: transform; }
 .drag-preview-card .more { color: #7d8992; }
