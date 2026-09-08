@@ -8,7 +8,7 @@ export type StoredAccount = {
   order: number
   url?: string
 }
-const STORAGE_KEY = "flowpilot-accounts"
+const STORAGE_KEY = "vgenmulti-accounts"
 function isAccount(value: unknown): value is StoredAccount {
   if (!value || typeof value !== "object") return false
   const a = value as Partial<StoredAccount>
@@ -41,7 +41,7 @@ export async function loadAccounts(): Promise<StoredAccount[]> {
     }
     return []
   } catch (error) {
-    console.error("Flowpilot account data could not be loaded", error)
+    console.error("VGenMulti account data could not be loaded", error)
     return []
   }
 }
@@ -51,7 +51,7 @@ export async function saveAccounts(accounts: StoredAccount[]) {
     await invoke("save_accounts", { accounts })
     localStorage.removeItem(STORAGE_KEY)
   } catch (error) {
-    console.error("Flowpilot account data could not be saved", error)
+    console.error("VGenMulti account data could not be saved", error)
   }
 }
 import { invoke } from "@tauri-apps/api/core"
