@@ -1,10 +1,10 @@
 [package]
-name = "flowpilot"
+name = "vgenmulti"
 version = "1.2.0"
 edition = "2021"
 
 [lib]
-name = "flowpilot_lib"
+name = "vgenmulti_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
