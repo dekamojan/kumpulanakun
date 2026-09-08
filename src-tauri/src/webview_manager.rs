@@ -5,7 +5,7 @@ use std::sync::Mutex;
 use tauri::path::BaseDirectory;
 use tauri::webview::WebviewBuilder;
 use tauri::{AppHandle, Manager, Runtime, WebviewUrl};
-
+#[allow(dead_code)]
 const GOOGLE_FLOW_URL: &str = "https://flow.google";
 const WEBVIEW_LABEL_PREFIX: &str = "google-flow";
 const MAX_CACHED_WEBVIEWS: usize = 10;
