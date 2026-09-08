@@ -135,5 +135,5 @@ pub fn run() {
             account_store::save_accounts
         ])
         .run(tauri::generate_context!())
-        .expect("error while running Flowpilot");
+        .expect("error while running VGenMulti");
 }
