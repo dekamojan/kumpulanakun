@@ -375,8 +375,8 @@ const createAccount = () => {
       await invoke("expand_main_window"); await w.show(); await w.setFocus(); return
     } catch { setLicenseError("Server Unavailable") } finally { setLicenseChecking(false) }
   }
-  const openLicensePurchase = () =>
-    invoke("open_external_url", { url: LICENSE_PURCHASE_URL })
+  const openLicensePurchase = (url?: string) =>
+    invoke("open_external_url", { url: url || LICENSE_PURCHASE_URL })
   if (licenseChecking && !licensed)
     return <div className="gate"><div className="gate-card"><Brand /><h1>Checking your license</h1><p>Connecting securely to VGenMulti License Server…</p></div></div>
   if (!licensed)
