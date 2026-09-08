@@ -513,7 +513,7 @@ const createAccount = () => {
         {view === "settings" ? (
           <Settings profile={profile} onAvatarChange={updateProfileAvatar} />
         ) : view === "license" ? (
-          <LicensePage licenseState={licenseState} onBuy={() => void openLicensePurchase()} />
+          <LicensePage licenseState={licenseState} onBuy={(url) => openLicensePurchase(url)} />
         ) : view === "updates" ? (
           <UpdatesPage />
         ) : view === "info" ? (
