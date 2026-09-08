@@ -855,36 +855,71 @@ function UpdatesPage() {
   )
 }
 function InfoPage() {
-  const steps = [
-    [
-      "Enter Your License",
-      "Enter your VGenMulti license on the initial screen to activate the application.",
-    ],
-    [
-      "Add an Account",
-      "Click + Add Account to add another Google Flow account.",
-    ],
-    [
-      "Sign In to Google Flow",
-      "Sign in directly through Google Flow. VGenMulti does not ask for or store your Google password.",
-    ],
-    [
-      "Manage Your Accounts",
-      "Use Account Cards to open, rename, favorite, remove, and reorder your Google Flow accounts.",
-    ],
-    [
-      "Open Google Flow",
-      "Click Open Google Flow to open the selected account.",
-    ],
-    [
-      "Switch Between Accounts",
-      "Use the mini navigation while Google Flow is open to quickly switch between your accounts.",
-    ],
-  ]
+  // State untuk menyimpan pilihan bahasa (default: English)
+  const [lang, setLang] = useState<"en" | "id">("en")
+
+  // Data konten dalam 2 bahasa
+  const content = {
+    en: {
+      steps: [
+        ["The Ultimate Account Pool", "Keep all your Google Flow, Dola, and Migoo accounts in one single workspace. Say goodbye to scattered and messy browser tabs."],
+        ["One-Click Switching", "Jump from one account to another instantly. Switch workspaces efficiently without the tedious process of logging in and out."],
+        ["Beat Generation Limits", "Hit your daily usage limit on one account? Just click on your backup account and continue your work without missing a beat."],
+        ["Effortless Control", "Easily organize, rename, and favorite your accounts. You have full visibility and control over your entire AI workflow."]
+      ],
+      whyTitle: "Why choose VGenMulti over a browser?",
+      whySubtitle: "Maximize your productivity and efficiency.",
+      whyBadge: "WORK SMART",
+      reasons: [
+        ["🚫 Zero Tab Clutter", "Stop getting lost in dozens of open tabs. VGenMulti keeps your workspace clean, focused, and organized in one dedicated app."],
+        ["⚡ Instant Transitions", "Time is money. Switching between accounts takes literally one click, saving you time from managing multiple browser profiles."],
+        ["🤖 All-in-One AI Hub", "Whether you are generating with Google Flow, Dola, or Migoo, everything runs side-by-side smoothly in a single interface."],
+        ["🛡️ Focused Resource", "Designed specifically to handle multiple AI accounts efficiently without eating up your computer's RAM like standard browsers do."]
+      ]
+    },
+    id: {
+      steps: [
+        ["Pusat Akun Terpadu", "Kumpulkan semua akun Google Flow, Dola, dan Migoo di satu tempat. Ucapkan selamat tinggal pada tab browser yang berantakan."],
+        ["Pindah Akun 1 Klik", "Pindah antar akun secara instan. Bekerja lebih efisien tanpa repot login dan logout berulang kali."],
+        ["Atasi Limit Harian", "Limit harian di satu akun habis? Cukup klik akun cadanganmu dan lanjutkan pekerjaan tanpa hambatan."],
+        ["Kontrol Penuh", "Kelola, ganti nama, dan favoritkan akun dengan mudah. Kamu punya kontrol penuh atas seluruh alur kerjamu."]
+      ],
+      whyTitle: "Mengapa memilih VGenMulti dibanding browser?",
+      whySubtitle: "Maksimalkan produktivitas dan efisiensi Anda.",
+      whyBadge: "KERJA CERDAS",
+      reasons: [
+        ["🚫 Bebas Tab Menumpuk", "Berhenti pusing dengan puluhan tab yang terbuka. VGenMulti menjaga ruang kerjamu tetap bersih, fokus, dan rapi di satu aplikasi khusus."],
+        ["⚡ Transisi Instan", "Waktu adalah uang. Pindah antar akun hanya butuh satu klik, menghemat waktumu dari pada mengelola banyak profil browser."],
+        ["🤖 Hub AI All-in-One", "Entah kamu memakai Google Flow, Dola, atau Migoo, semuanya berjalan beriringan dengan lancar di satu tampilan antarmuka."],
+        ["🛡️ Hemat Resource RAM", "Dirancang khusus untuk mengelola banyak akun AI secara efisien tanpa memakan banyak RAM komputer seperti browser biasa."]
+      ]
+    }
+  }
+
+  const current = content[lang]
+
   return (
     <div className="feature-page info-page">
+      {/* Tombol Pemilih Bahasa */}
+      <div style={{ display: "flex", gap: "12px", marginBottom: "30px", justifyContent: "center" }}>
+        <button 
+          className={lang === "en" ? "primary" : "secondary"} 
+          onClick={() => setLang("en")}
+          style={{ width: "150px" }}
+        >
+          English
+        </button>
+        <button 
+          className={lang === "id" ? "primary" : "secondary"} 
+          onClick={() => setLang("id")}
+          style={{ width: "150px" }}
+        >
+          Bahasa Indonesia
+        </button>
+      </div>
+
       <div className="info-steps">
-        {steps.map((step, i) => (
+        {current.steps.map((step, i) => (
           <section className="info-step" key={step[0]}>
             <div className="step-number">{String(i + 1).padStart(2, "0")}</div>
             <div>
@@ -894,55 +929,23 @@ function InfoPage() {
           </section>
         ))}
       </div>
+
       <section className="privacy-info info-card">
         <div className="privacy-heading">
-          <div className="eyebrow">PRIVACY &amp; SECURITY</div>
-          <h2>Your accounts stay under your control.</h2>
-          <span className="badge">LOCAL ACCOUNT DATA</span>
+          <div className="eyebrow">{current.whySubtitle.toUpperCase()}</div>
+          <h2>{current.whyTitle}</h2>
+          <span className="badge">{current.whyBadge}</span>
         </div>
-        <div className="privacy-row">
-          <span>🔒</span>
-          <div>
-            <h3>Google Login Stays in Google Flow</h3>
-            <p>
-              Your Google account login is handled directly inside Google Flow.
-              VGenMulti does not ask you to enter your Google password into
-              VGenMulti.
-            </p>
+        
+        {current.reasons.map((reason) => (
+          <div className="privacy-row" key={reason[0]}>
+            <span>{reason[0].split(" ")[0]}</span>
+            <div>
+              <h3>{reason[0].substring(reason[0].indexOf(" ") + 1)}</h3>
+              <p>{reason[1]}</p>
+            </div>
           </div>
-        </div>
-        <div className="privacy-row">
-          <span>🔑</span>
-          <div>
-            <h3>No Password Storage</h3>
-            <p>
-              VGenMulti does not store your Google password or ask you to
-              provide it to the application.
-            </p>
-          </div>
-        </div>
-        <div className="privacy-row">
-          <span>💻</span>
-          <div>
-            <h3>Local Account Management</h3>
-            <p>
-              VGenMulti stores account-management metadata locally on your
-              device so you can organize your Google Flow accounts.
-            </p>
-          </div>
-        </div>
-        <div className="privacy-row">
-          <span>🛡️</span>
-          <div>
-            <h3>No Unnecessary Account Data Collection</h3>
-            <p>
-              VGenMulti is designed to manage account shortcuts without
-              requiring unnecessary Google account information. Your Google
-              account remains managed through Google Flow.
-            </p>
-          </div>
-        </div>
-      {/* BAGIAN PERBAIKAN 3: Penutup Halaman Info Privasi */}
+        ))}
       </section>
     </div>
   )
