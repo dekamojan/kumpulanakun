@@ -30,19 +30,19 @@ const plans = [
     name: "30 Days",
     originalPrice: "Rp50,000",
     price: "Rp25,000",
-    description: "Flowpilot access for 30 days",
+    description: "VGenMulti access for 30 days",
   },
   {
     name: "1 Year",
     originalPrice: "Rp149.000",
     price: "Rp99.000",
-    description: "Flowpilot access for 1 year",
+    description: "VGenMulti access for 1 year",
   },
   {
     name: "Lifetime",
     originalPrice: "Rp249.000",
     price: "Rp149.000",
-    description: "Flowpilot access with no expiration",
+    description: "VGenMulti access with no expiration",
   },
 ]
 const starter: Account[] = [
@@ -90,11 +90,11 @@ export default function App() {
   }>(() => {
     try {
       return JSON.parse(
-        localStorage.getItem("flowpilot-profile") ||
-          '{"name":"Flowpilot","avatar":null}'
+        localStorage.getItem("vgenmulti-profile") ||
+          '{"name":"VGenMulti","avatar":null}'
       )
     } catch {
-      return { name: "Flowpilot", avatar: null }
+      return { name: "VGenMulti", avatar: null }
     }
   })
   const [query, setQuery] = useState("")
@@ -223,7 +223,7 @@ const createAccount = () => {
   const updateProfileAvatar = (avatar: string) => {
     const next = { ...profile, avatar }
     setProfile(next)
-    localStorage.setItem("flowpilot-profile", JSON.stringify(next))
+    localStorage.setItem("vgenmulti-profile", JSON.stringify(next))
   }
   useEffect(() => {
     if (!licensed || accountsLoaded) return
@@ -369,14 +369,14 @@ const createAccount = () => {
   const openLicensePurchase = () =>
     invoke("open_external_url", { url: LICENSE_PURCHASE_URL })
   if (licenseChecking && !licensed)
-    return <div className="gate"><div className="gate-card"><Brand /><h1>Checking your license</h1><p>Connecting securely to Flowpilot License Server…</p></div></div>
+    return <div className="gate"><div className="gate-card"><Brand /><h1>Checking your license</h1><p>Connecting securely to VGenMulti License Server…</p></div></div>
   if (!licensed)
     return (
       <div className="gate">
         <div className="gate-card">
           <Brand />
           <h1>Enter your license</h1>
-          <p>Activate Flowpilot with your license key.</p>
+          <p>Activate VGenMulti with your license key.</p>
           <input
             autoFocus
             value={key}
@@ -385,7 +385,7 @@ const createAccount = () => {
             onKeyDown={(e) => e.key === "Enter" && activateLicense()}
           />
           <button className="primary wide" onClick={activateLicense}>
-            {licenseChecking ? "Activating…" : "Activate Flowpilot →"}
+            {licenseChecking ? "Activating…" : "Activate VGenMulti →"}
           </button>
           {licenseError && <p className="dialog-error">{licenseError}</p>}
           <div className="link">
@@ -444,7 +444,7 @@ const createAccount = () => {
         <header>
           <div>
             <div className="eyebrow">
-              FLOWPILOT /{" "}
+              VGENMULTI /{" "}
               {view === "settings"
                 ? "SETTINGS"
                 : view === "favorites"
@@ -456,7 +456,7 @@ const createAccount = () => {
                 : view === "favorites" ? "Favorite Accounts"
                 : view === "license" ? "License"
                 : view === "updates" ? "Updates"
-                : view === "info" ? "How to Use Flowpilot"
+                : view === "info" ? "How to Use VGenMulti"
                 : view === "flow-accounts" ? "Google Flow Accounts"
                 : view === "dola-accounts" ? "Dola Accounts"
                 : view === "migoo-accounts" ? "Migoo.ai Accounts"
@@ -464,13 +464,13 @@ const createAccount = () => {
             </h1>
             <p>
               {view === "settings"
-                ? "Keep Flowpilot personal, private, and ready to use."
+                ? "Keep VGenMulti personal, private, and ready to use."
                 : view === "favorites"
                 ? "Your favorite Google Flow accounts in one place."
                 : view === "license"
-                ? "Choose the Flowpilot license that fits your needs."
+                ? "Choose the VGenMulti license that fits your needs."
                 : view === "updates"
-                ? "Keep Flowpilot up to date with the latest version."
+                ? "Keep VGenMulti up to date with the latest version."
                 : view === "info"
                 ? "A quick guide to managing your Google Flow accounts."
                 : "Manage your Google Flow accounts in one place."}
@@ -543,7 +543,7 @@ const createAccount = () => {
             <div className="dialog">
               <h2>Delete {dialog.name}?</h2>
               <p>
-                This removes the account card from Flowpilot. Your Google
+                This removes the account card from VGenMulti. Your Google
                 account is not affected.
               </p>
               <div className="dialog-actions">
@@ -613,8 +613,8 @@ const createAccount = () => {
 function Brand() {
   return (
     <div className="brand">
-      <img className="brand-image" src="/foursquare.png" alt="Flowpilot logo" />
-      <span>FLOWPILOT</span>
+      <img className="brand-image" src="/foursquare.png" alt="VGenMulti logo" />
+      <span>VGENMULTI</span>
     </div>
   )
 }
@@ -691,7 +691,7 @@ function Sidebar({
       <div className="side-bottom">
         <div className="avatar">
           {profile.avatar ? (
-            <img src={profile.avatar} alt="Flowpilot profile" />
+            <img src={profile.avatar} alt="VGenMulti profile" />
           ) : (
             "YK"
           )}
@@ -865,7 +865,7 @@ function InfoPage() {
   const steps = [
     [
       "Enter Your License",
-      "Enter your Flowpilot license on the initial screen to activate the application.",
+      "Enter your VGenMulti license on the initial screen to activate the application.",
     ],
     [
       "Add an Account",
@@ -873,7 +873,7 @@ function InfoPage() {
     ],
     [
       "Sign In to Google Flow",
-      "Sign in directly through Google Flow. Flowpilot does not ask for or store your Google password.",
+      "Sign in directly through Google Flow. VGenMulti does not ask for or store your Google password.",
     ],
     [
       "Manage Your Accounts",
@@ -913,8 +913,8 @@ function InfoPage() {
             <h3>Google Login Stays in Google Flow</h3>
             <p>
               Your Google account login is handled directly inside Google Flow.
-              Flowpilot does not ask you to enter your Google password into
-              Flowpilot.
+              VGenMulti does not ask you to enter your Google password into
+              VGenMulti.
             </p>
           </div>
         </div>
@@ -923,7 +923,7 @@ function InfoPage() {
           <div>
             <h3>No Password Storage</h3>
             <p>
-              Flowpilot does not store your Google password or ask you to
+              VGenMulti does not store your Google password or ask you to
               provide it to the application.
             </p>
           </div>
@@ -933,7 +933,7 @@ function InfoPage() {
           <div>
             <h3>Local Account Management</h3>
             <p>
-              Flowpilot stores account-management metadata locally on your
+              VGenMulti stores account-management metadata locally on your
               device so you can organize your Google Flow accounts.
             </p>
           </div>
@@ -943,7 +943,7 @@ function InfoPage() {
           <div>
             <h3>No Unnecessary Account Data Collection</h3>
             <p>
-              Flowpilot is designed to manage account shortcuts without
+              VGenMulti is designed to manage account shortcuts without
               requiring unnecessary Google account information. Your Google
               account remains managed through Google Flow.
             </p>
@@ -1063,7 +1063,7 @@ function Settings({
       <section>
         <label className="setting-icon profile-avatar-input">
           {profile.avatar ? (
-            <img src={profile.avatar} alt="Flowpilot profile" />
+            <img src={profile.avatar} alt="VGenMulti profile" />
           ) : (
             "YK"
           )}
@@ -1096,7 +1096,7 @@ function Settings({
         </label>
         <div>
           <div className="eyebrow">PROFILE</div>
-          <h2>Your Flowpilot profile</h2>
+          <h2>Your VGenMulti profile</h2>
           <p>Local desktop profile used for your account manager.</p>
         </div>
       </section>
@@ -1105,7 +1105,7 @@ function Settings({
           <div className="eyebrow">PRIVACY & SECURITY</div>
           <h2>Your data stays local</h2>
           <p>
-            Flowpilot stores account metadata on this device. Google passwords
+            VGenMulti stores account metadata on this device. Google passwords
             and credentials are never captured.
           </p>
         </div>
@@ -1115,7 +1115,7 @@ function Settings({
         <div>
           <div className="eyebrow">ABOUT</div>
           <h2>
-            Flowpilot <span className="muted">{APP_VERSION}</span>
+            VGenMulti <span className="muted">{APP_VERSION}</span>
           </h2>
           <p>Google Flow desktop workspace and multi-account manager.</p>
         </div>
@@ -1158,7 +1158,7 @@ function FlowShell({
     })
       .then(() => {
         if (!cancelled) setStatus("Google Flow ready")
-        containerRef.current?.dispatchEvent(new Event("flowpilot-webview-ready"))
+        containerRef.current?.dispatchEvent(new Event("vgenmulti-webview-ready"))
       })
       .catch((error) => {
         console.error("Google Flow WebView failed", error)
@@ -1177,13 +1177,13 @@ function FlowShell({
       void invoke("resize_google_flow", { accountId: account.id, x: rect.left, y: rect.top, width: rect.width, height: rect.height })
     }
     const onReady = () => syncBounds()
-    container.addEventListener("flowpilot-webview-ready", onReady)
+    container.addEventListener("vgenmulti-webview-ready", onReady)
     const observer = new ResizeObserver(syncBounds)
     observer.observe(container)
     syncBounds()
     return () => {
       observer.disconnect()
-      container.removeEventListener("flowpilot-webview-ready", onReady)
+      container.removeEventListener("vgenmulti-webview-ready", onReady)
     }
   }, [navigatorOpen, fullView])
   useEffect(() => {
