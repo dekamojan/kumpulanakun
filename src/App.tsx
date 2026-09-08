@@ -1025,9 +1025,9 @@ function Card({
           draggable={false}
         />
       </div>
-      <h2>{a.name}</h2>
+<h2>{a.name}</h2>
       <button className="primary wide" onClick={onOpen}>
-        Open Google Flow <span>→</span>
+        {a.url?.includes("dola") ? "Open Dola" : a.url?.includes("migoo") ? "Open Migoo" : "Open Google Flow"} <span>→</span>
       </button>
       <div className="card-links">
         <button onClick={onRename}>✎ Rename</button>
