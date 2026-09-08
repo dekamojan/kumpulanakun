@@ -105,8 +105,8 @@ fn expand_main_window(app: tauri::AppHandle) -> Result<(), String> {
         .map_err(|e| e.to_string())?;
     window
         .set_min_size(Some(tauri::Size::Physical(tauri::PhysicalSize {
-            width: 1000,
-            height: 700,
+            width: 800,
+            height: 600,
         })))
         .map_err(|e| e.to_string())?;
     window.center().map_err(|e| e.to_string())?;
