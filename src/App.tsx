@@ -663,31 +663,24 @@ function Sidebar({
         <SidebarIcon name="favorites" /> <span>Favorites</span>
       </button>
       <div className="rule" />
-      <div className="side-label">GENERAL</div>
+<div className="side-label">GENERAL</div>
       <button
         className={view === "license" ? "active" : ""}
         onClick={() => setView("license")}
       >
         <SidebarIcon name="license" /> <span>License</span>
       </button>
-      <button
-        className={view === "updates" ? "active" : ""}
-        onClick={() => setView("updates")}
-      >
-        <SidebarIcon name="updates" /> <span>Updates</span>
-      </button>
+
+      {/* Menu Updates dihapus */}
+
       <button
         className={view === "info" ? "active" : ""}
         onClick={() => setView("info")}
       >
         <SidebarIcon name="info" /> <span>Info</span>
       </button>
-      <button
-        className={view === "settings" ? "active" : ""}
-        onClick={() => setView("settings")}
-      >
-        <SidebarIcon name="settings" /> <span>Settings</span>
-      </button>
+
+      {/* Menu Settings dihapus */}
       <div className="side-bottom">
         <div className="avatar">
           {profile.avatar ? (
