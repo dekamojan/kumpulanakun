@@ -17,7 +17,7 @@
         "height": 620, 
         "minWidth": 540, 
         "minHeight": 620, 
-        "resizable": false, 
+        "resizable": true, 
         "center": true, 
         "decorations": true, 
         "theme": "Dark" 
